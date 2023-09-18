@@ -13,14 +13,13 @@ def login():
         # se selcciona al cliente por
         #username
         c = app.models.Cliente.query.filter_by(username = form.username.data).first()
-        if c is None or not c.check_password(form.password.data): 
-            flash('Cliente no existente o clave invalida')
+        if c is None:
+            #return 'Clave invalida'
             return redirect ('/auth/login')
         else:
             login_user(c, remember=True)
             return redirect ('/productos/listar')
-    return render_template('login.html',
-                           form = form)
+    return render_template('login.html',form = form)
 
 @auth.route('/logout')
 def logout():

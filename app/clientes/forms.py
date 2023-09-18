@@ -4,13 +4,13 @@ from wtforms.validators import InputRequired, Email
 
 class ClientForm():
     username = StringField(
-        "Ingresa el nombre del clientre:", validators= [ InputRequired(message='nombre requerido')]
+        "Ingresa el nombre del usuario:", validators= [ InputRequired(message='nombre requerido')]
         )
     password = StringField(
-        "Ingresa el password del cliente:", validators= [ InputRequired(message='password requerido')]
+        "Ingresa el password del usuario:", validators= [ InputRequired(message='password requerido')]
         )
     email = EmailField(
-        "Ingresa el email del cliente:", 
+        "Ingresa el email del usuario:",
         validators= [ InputRequired(message='email requerido'), Email('El email es invalido recuerda que debe contener "@" y el "."')])
     
 class NewClientForm(FlaskForm, ClientForm):

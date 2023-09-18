@@ -1,10 +1,12 @@
 from flask import render_template, redirect, flash
+from flask_login import login_required
 from app.productos import productos
 import app
 import os
 from .forms import NewProductForm, EditProductForm
 
 @productos.route('/create', methods = ['GET', 'POST'])
+@login_required
 def crear():
 
     p = app.models.Producto()
@@ -49,5 +51,3 @@ def eliminar(producto_id):
     app.db.session.commit()
     flash('Producto Eliminado')
     return redirect('/productos/listar')
-    return render_template("new.html" ,
-                           form = form)
